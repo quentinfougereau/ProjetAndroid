@@ -1,4 +1,4 @@
-package com.esgi.agnoscere.xmlparser;
+package main;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -17,8 +17,8 @@ import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
-import com.esgi.agnoscere.constants.Vote;
-import com.esgi.agnoscere.constants.XMLConstants;
+import constants.Vote;
+import constants.XMLConstants;
 
 public class XMLParser {
 
@@ -129,9 +129,11 @@ public class XMLParser {
 						.intValue() + 1;
 				element.getChild(xmlVoteCase).setText(
 						String.valueOf(val));
+				writeElementXML(element,document);
+				find=true;
 			}
 		}
-		writeXML(document);
+
 	}
 
 	public static void iKnewIt(Document document, int anecdoteId) {
@@ -159,10 +161,11 @@ public class XMLParser {
 					Element newCom = createElementComment(anecdoteId, autor,
 							contents, id);
 					elementComments.addContent(newCom);
+					writeElementXML(elementComments,document);
 					find=true;
 				}
 			}
-			writeXML(document);
+
 
 		}
 	}
@@ -188,7 +191,7 @@ public class XMLParser {
 		Element newAnecdote = createElementAnecdote(autor, title, category,
 				contents, videoid, imagelink, sources, id);
 		root.addContent(newAnecdote);
-		writeXML(document);	
+		writeElementXML(newAnecdote,document);
 	}
 
 	private static Element createElementAnecdote(String autor, String title,
@@ -206,6 +209,7 @@ public class XMLParser {
 		newAnecdote.addContent(new Element(XMLConstants.VIDEOID_ANECDOTE).setText(videoid));
 		newAnecdote.addContent(new Element(XMLConstants.IMAGELINK_ANECDOTE).setText(imagelink));
 		Element sourcesElement = new Element(XMLConstants.SOURCES_ANECDOTE);
+		if(sources!=null)
 		for(String s : sources)
 			sourcesElement.addContent(new Element(XMLConstants.SOURCE_ANECDOTE).setText(s));
 		newAnecdote.addContent(sourcesElement);
@@ -231,13 +235,24 @@ public class XMLParser {
 		while(it.hasNext() && find == false){
 			Element element = it.next();
 			if (element.getAttributeValue(XMLConstants.ID_ATTRIBUTE_ANECDOTE)
-					.equals(String.valueOf(anecdoteId))) 
+					.equals(String.valueOf(anecdoteId))) {
 				element.getChild(XMLConstants.CONTENTS_ANECDOTE).setText(contents);
-			
+				writeElementXML(element,document);
 			}
-		writeXML(document);
-	}
 
+			}
+	}
+	private static void writeElementXML(Element element,Document document){
+		XMLOutputter xmlOutput = new XMLOutputter();
+		xmlOutput.setFormat(Format.getPrettyFormat());
+		try {
+			xmlOutput.outputElementContent(element, new FileWriter(document.getBaseURI()
+					.replaceFirst("file:/", "")));
+		} catch (IOException e) {
+			// TODO Bloc catch auto-g�n�r�
+			e.printStackTrace();
+		}
+	}
 	private static void writeXML(Document document) {
 		XMLOutputter xmlOutput = new XMLOutputter();
 		xmlOutput.setFormat(Format.getPrettyFormat());
@@ -253,11 +268,11 @@ public class XMLParser {
 	public static void main(String[] args) {
 		Document xmlDocument = XMLParser
 				.loadXMLDocument("xmlfolder/xmlfile.xml");
+		XMLParser.postAnecdote(xmlDocument,"a","b","c","d","e","f",null);
+		XMLParser.postComment(xmlDocument, 5,"Nicolas","je teste l'add");
 		
-		XMLParser.postComment(xmlDocument, 5,"Nicolas","j'edite un com2");
 		
-		
-		XMLParser.editAnecdote(xmlDocument, 2, "Anecdote Edite");
+		XMLParser.editAnecdote(xmlDocument, 2, "A le batard");
 		XMLParser.iDidntKnowIt(xmlDocument, 6);
 		XMLParser.iKnewIt(xmlDocument, 6);
 		ArrayList<Anecdote> anecdoteArray = XMLParser.parseXML(xmlDocument, "");
