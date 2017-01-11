@@ -129,11 +129,12 @@ public class XMLParser {
 						.intValue() + 1;
 				element.getChild(xmlVoteCase).setText(
 						String.valueOf(val));
-				writeElementXML(element,document);
+
 				find=true;
 			}
-		}
 
+		}
+		writeXML(document);
 	}
 
 	public static void iKnewIt(Document document, int anecdoteId) {
@@ -268,10 +269,10 @@ public class XMLParser {
 	public static void main(String[] args) {
 		Document xmlDocument = XMLParser
 				.loadXMLDocument("xmlfolder/xmlfile.xml");
-		XMLParser.postAnecdote(xmlDocument,"a","b","c","d","e","f",null);
-		XMLParser.postComment(xmlDocument, 5,"Nicolas","je teste l'add");
-		
-		
+		XMLParser.postAnecdote(xmlDocument,"a","b","d","e","f","g",null);
+		XMLParser.postComment(xmlDocument, 5,"Nicolas","je test l'add");
+
+
 		XMLParser.editAnecdote(xmlDocument, 2, "A le batard");
 		XMLParser.iDidntKnowIt(xmlDocument, 6);
 		XMLParser.iKnewIt(xmlDocument, 6);
