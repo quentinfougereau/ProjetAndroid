@@ -1,0 +1,25 @@
+<autor>Vartan</autor>
+<title>VartanTest</title>
+<category>Quentin</category>
+<contents>ContenuDeQuentin</contents>
+<date>09:35 13/12/2016</date>
+<ididntknowvote>9</ididntknowvote>
+<iknewvote>9</iknewvote>
+<videoid>ID VIDEO NICOLAS</videoid>
+<imagelink>Y a pas d'image</imagelink>
+<sources>
+  <source>www.sourcesnumero1.com</source>
+  <source>www.sourcesnumero2.com</source>
+</sources>
+<comments>
+  <comment idcomment="6_1">
+    <autorcomment>Nicolas</autorcomment>
+    <contentscomment>j'edite un com</contentscomment>
+    <datecomment>09:35 13/12/2016</datecomment>
+  </comment>
+  <comment idcomment="6_2">
+    <autorcomment>Nicolas</autorcomment>
+    <contentscomment>j'edite un com</contentscomment>
+    <datecomment>09:36 13/12/2016</datecomment>
+  </comment>
+</comments>
