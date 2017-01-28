@@ -1,4 +1,4 @@
-package xmlparser;
+package com.esgi.agnoscere.xmlparser;
 
 public abstract class Post {
 	

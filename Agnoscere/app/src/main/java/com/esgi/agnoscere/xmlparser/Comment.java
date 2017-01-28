@@ -1,6 +1,6 @@
 package com.esgi.agnoscere.xmlparser;
 
-import xmlparser.Post;
+
 
 public class Comment extends Post {
 

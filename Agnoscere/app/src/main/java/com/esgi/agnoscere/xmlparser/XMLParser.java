@@ -1,4 +1,14 @@
-package main;
+package com.esgi.agnoscere.xmlparser;
+
+
+
+import org.jdom2.Attribute;
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.JDOMException;
+import org.jdom2.input.SAXBuilder;
+import org.jdom2.output.Format;
+import org.jdom2.output.XMLOutputter;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -9,16 +19,8 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-import org.jdom2.Attribute;
-import org.jdom2.Document;
-import org.jdom2.Element;
-import org.jdom2.JDOMException;
-import org.jdom2.input.SAXBuilder;
-import org.jdom2.output.Format;
-import org.jdom2.output.XMLOutputter;
-
-import constants.Vote;
-import constants.XMLConstants;
+import com.esgi.agnoscere.constants.Vote;
+import com.esgi.agnoscere.constants.XMLConstants;
 
 public class XMLParser {
 

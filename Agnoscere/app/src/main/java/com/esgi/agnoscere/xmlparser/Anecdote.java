@@ -1,9 +1,12 @@
 package com.esgi.agnoscere.xmlparser;
+
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 
-import xmlparser.Post;
 
-public class Anecdote extends Post {
+public class Anecdote extends Post implements Parcelable{
 	private final String title;
 	private final String category;
 	private int ididntknowvote = 0;
@@ -16,7 +19,7 @@ public class Anecdote extends Post {
 	public Anecdote(String id, String autor,String title, String category, String contents,String date,
 			int ididntknowvote, int iknewvote, String videoid,String imagelink,
 			ArrayList<String> sources,ArrayList<Comment> comments) {
-		
+
 		super(id,autor,contents,date);
 		this.title = title;
 		this.category = category;
@@ -27,9 +30,8 @@ public class Anecdote extends Post {
 		this.sources = sources;
 		this.comments=comments;
 	}
-	
-	
-	public ArrayList<Comment> getcomments() {
+
+    public ArrayList<Comment> getcomments() {
 		return comments;
 	}
 
@@ -145,5 +147,50 @@ public class Anecdote extends Post {
 				+ " I knew it : " + iknewvote + " Video Id : " + videoid + " Image Link : "+imagelink
 				+ " Sources :" + sourcesString+"\nComments : "+commentsString;
 	}
+
+
+
+
+    public Anecdote(Parcel in) {
+        super(in.readString(),in.readString(),in.readString(),in.readString());
+        title = in.readString();
+        category = in.readString();
+        ididntknowvote = in.readInt();
+        iknewvote = in.readInt();
+        videoid = in.readString();
+        imagelink = in.readString();
+        sources = in.createStringArrayList();
+    }
+
+    public static final Creator<Anecdote> CREATOR = new Creator<Anecdote>() {
+        @Override
+        public Anecdote createFromParcel(Parcel in) {
+            return new Anecdote(in);
+        }
+
+        @Override
+        public Anecdote[] newArray(int size) {
+            return new Anecdote[size];
+        }
+    };
+
+
+    @Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+
+		dest.writeString(title);
+		dest.writeString(category);
+		dest.writeInt(ididntknowvote);
+		dest.writeInt(iknewvote);
+		dest.writeString(videoid);
+		dest.writeString(imagelink);
+		dest.writeList(sources);
+		dest.writeList(comments);
+    }
 
 }
