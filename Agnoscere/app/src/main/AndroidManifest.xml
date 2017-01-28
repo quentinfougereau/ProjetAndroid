@@ -15,9 +15,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".AnecdoteActivity"
-            android:label="@string/title_activity_anecdote"></activity>
+        <activity android:name=".AnecdoteActivity2"></activity>
     </application>
 
 </manifest>
