@@ -28,9 +28,9 @@ public class AnecdoteActivity2 extends AppCompatActivity {
         TextView anecdotetext = (TextView) findViewById(R.id.anecdote_text);
         anecdotetext.setText(anecdote.getContent());
 
-        List<Comment> tweets = getComment(anecdote);
+        List<Comment> commentaire = getComment(anecdote);
 
-        CommentAdapter adapter = new CommentAdapter(AnecdoteActivity2.this, tweets);
+        CommentAdapter adapter = new CommentAdapter(AnecdoteActivity2.this, commentaire);
         mListView.setAdapter(adapter);
     }
 

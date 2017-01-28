@@ -38,7 +38,6 @@ public class CommentAdapter extends ArrayAdapter<Comment> {
             convertView.setTag(viewHolder);
         }
 
-        //getItem(position) va récupérer l'item [position] de la List<Tweet> tweets
         Comment comment = getItem(position);
 
         //il ne reste plus qu'à remplir notre vue
