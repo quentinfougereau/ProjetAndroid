@@ -3,10 +3,11 @@ package com.esgi.agnoscere.xmlparser;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class Anecdote extends Post implements Parcelable{
+public class Anecdote extends Post implements Serializable{
 	private final String title;
 	private final String category;
 	private int ididntknowvote = 0;
@@ -14,7 +15,7 @@ public class Anecdote extends Post implements Parcelable{
 	private String videoid = "";
 	private String imagelink = "";
 	private ArrayList<String> sources = new ArrayList<String>();
-	private ArrayList<Comment> comments= new ArrayList<Comment>();
+	private ArrayList<Comment> comments = new ArrayList<Comment>();
 
 	public Anecdote(String id, String autor,String title, String category, String contents,String date,
 			int ididntknowvote, int iknewvote, String videoid,String imagelink,
@@ -26,9 +27,9 @@ public class Anecdote extends Post implements Parcelable{
 		this.ididntknowvote = ididntknowvote;
 		this.iknewvote = iknewvote;
 		this.videoid = videoid;
-		this.imagelink=imagelink;
+		this.imagelink = imagelink;
 		this.sources = sources;
-		this.comments=comments;
+		this.comments = comments;
 	}
 
     public ArrayList<Comment> getcomments() {
@@ -148,21 +149,13 @@ public class Anecdote extends Post implements Parcelable{
 				+ " Sources :" + sourcesString+"\nComments : "+commentsString;
 	}
 
-
-
-
-    public Anecdote(Parcel in) {
-        super(in.readString(),in.readString(),in.readString(),in.readString());
-        title = in.readString();
-        category = in.readString();
-        ididntknowvote = in.readInt();
-        iknewvote = in.readInt();
-        videoid = in.readString();
-        imagelink = in.readString();
-        sources = in.createStringArrayList();
+  /*  @Override
+    public int describeContents() {
+        return 0;
     }
 
-    public static final Creator<Anecdote> CREATOR = new Creator<Anecdote>() {
+
+    public static final Parcelable.Creator<Anecdote> CREATOR = new Parcelable.Creator<Anecdote>() {
         @Override
         public Anecdote createFromParcel(Parcel in) {
             return new Anecdote(in);
@@ -189,8 +182,22 @@ public class Anecdote extends Post implements Parcelable{
 		dest.writeInt(iknewvote);
 		dest.writeString(videoid);
 		dest.writeString(imagelink);
-		dest.writeList(sources);
+		dest.writeStringList(sources);
 		dest.writeList(comments);
     }
 
+    public Anecdote(Parcel in) {
+
+        super(in.readString(),in.readString(),in.readString(),in.readString());
+
+        title = in.readString();
+        category = in.readString();
+        ididntknowvote = in.readInt();
+        iknewvote = in.readInt();
+        videoid = in.readString();
+        imagelink = in.readString();
+        in.readStringList(sources);
+        in.readList(comments,Comment.class.getClassLoader());
+    }
+    */
 }

@@ -8,6 +8,6 @@ import android.widget.TextView;
 
 public class AnecdoteViewHolder {
     public TextView author;
-    public TextView text;
+    public TextView comment;
     public TextView date;
 }

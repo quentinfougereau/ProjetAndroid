@@ -33,7 +33,7 @@ public class CommentAdapter extends ArrayAdapter<Comment> {
         if(viewHolder == null){
             viewHolder = new AnecdoteViewHolder();
             viewHolder.author = (TextView) convertView.findViewById(R.id.author);
-            viewHolder.text = (TextView) convertView.findViewById(R.id.comment);
+            viewHolder.comment = (TextView) convertView.findViewById(R.id.comment);
             viewHolder.date = (TextView) convertView.findViewById(R.id.date);
             convertView.setTag(viewHolder);
         }
@@ -42,7 +42,7 @@ public class CommentAdapter extends ArrayAdapter<Comment> {
 
         //il ne reste plus qu'à remplir notre vue
         viewHolder.author.setText(comment.getAutor());
-        viewHolder.text.setText(comment.getContent());
+        viewHolder.comment.setText(comment.getContent());
         viewHolder.date.setText(comment.getDate());
 
         return convertView;
