@@ -1,13 +1,5 @@
 package com.esgi.agnoscere.xmlparser;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
 
 import org.jdom2.Attribute;
 import org.jdom2.Document;
@@ -17,14 +9,28 @@ import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+
+
 import com.esgi.agnoscere.constants.Vote;
 import com.esgi.agnoscere.constants.XMLConstants;
 
+import android.content.res.Resources;
+
 public class XMLParser {
 
-	public static Document loadXMLDocument(String xmlPath) {
+	public static Document loadXMLDocument(InputStream is) {
 		try {
-			return new SAXBuilder().build(new File(xmlPath));
+			//InputStream is = getAssets().open(xmlPath);
+			return new SAXBuilder().build(is);
 		} catch (JDOMException e) {
 			// TODO Bloc catch auto-g�n�r�
 			e.printStackTrace();
@@ -267,9 +273,10 @@ public class XMLParser {
 	}
 
 	public static void main(String[] args) {
+		/*
 		Document xmlDocument = XMLParser
 				.loadXMLDocument("xmlfolder/xmlfile.xml");
-		/*
+
 		XMLParser.postAnecdote(xmlDocument,"a","b","d","e","f","g",null);
 		XMLParser.postComment(xmlDocument, 5,"Nicolas","je test l'add");
 
@@ -277,9 +284,9 @@ public class XMLParser {
 		XMLParser.editAnecdote(xmlDocument, 2, "A le batard");
 		XMLParser.iDidntKnowIt(xmlDocument, 6);
 		XMLParser.iKnewIt(xmlDocument, 6);
-		*/
+
 		ArrayList<Anecdote> anecdoteArray = XMLParser.parseXML(xmlDocument, "");
 		XMLParser.displayAnecdotes(anecdoteArray);
-
+		*/
 	}
 }

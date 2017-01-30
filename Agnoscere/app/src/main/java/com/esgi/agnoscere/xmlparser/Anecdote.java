@@ -1,9 +1,13 @@
 package com.esgi.agnoscere.xmlparser;
+
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
-import com.esgi.agnoscere.xmlparser.Post;
 
-public class Anecdote extends Post {
+public class Anecdote extends Post implements Serializable{
 	private final String title;
 	private final String category;
 	private int ididntknowvote = 0;
@@ -11,25 +15,24 @@ public class Anecdote extends Post {
 	private String videoid = "";
 	private String imagelink = "";
 	private ArrayList<String> sources = new ArrayList<String>();
-	private ArrayList<Comment> comments= new ArrayList<Comment>();
+	private ArrayList<Comment> comments = new ArrayList<Comment>();
 
 	public Anecdote(String id, String autor,String title, String category, String contents,String date,
 			int ididntknowvote, int iknewvote, String videoid,String imagelink,
 			ArrayList<String> sources,ArrayList<Comment> comments) {
-		
+
 		super(id,autor,contents,date);
 		this.title = title;
 		this.category = category;
 		this.ididntknowvote = ididntknowvote;
 		this.iknewvote = iknewvote;
 		this.videoid = videoid;
-		this.imagelink=imagelink;
+		this.imagelink = imagelink;
 		this.sources = sources;
-		this.comments=comments;
+		this.comments = comments;
 	}
-	
-	
-	public ArrayList<Comment> getcomments() {
+
+    public ArrayList<Comment> getcomments() {
 		return comments;
 	}
 
@@ -146,4 +149,55 @@ public class Anecdote extends Post {
 				+ " Sources :" + sourcesString+"\nComments : "+commentsString;
 	}
 
+  /*  @Override
+    public int describeContents() {
+        return 0;
+    }
+
+
+    public static final Parcelable.Creator<Anecdote> CREATOR = new Parcelable.Creator<Anecdote>() {
+        @Override
+        public Anecdote createFromParcel(Parcel in) {
+            return new Anecdote(in);
+        }
+
+        @Override
+        public Anecdote[] newArray(int size) {
+            return new Anecdote[size];
+        }
+    };
+
+
+    @Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+
+		dest.writeString(title);
+		dest.writeString(category);
+		dest.writeInt(ididntknowvote);
+		dest.writeInt(iknewvote);
+		dest.writeString(videoid);
+		dest.writeString(imagelink);
+		dest.writeStringList(sources);
+		dest.writeList(comments);
+    }
+
+    public Anecdote(Parcel in) {
+
+        super(in.readString(),in.readString(),in.readString(),in.readString());
+
+        title = in.readString();
+        category = in.readString();
+        ididntknowvote = in.readInt();
+        iknewvote = in.readInt();
+        videoid = in.readString();
+        imagelink = in.readString();
+        in.readStringList(sources);
+        in.readList(comments,Comment.class.getClassLoader());
+    }
+    */
 }

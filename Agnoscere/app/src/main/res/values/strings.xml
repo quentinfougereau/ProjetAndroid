@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Agnoscere</string>
     <string name="title_activity_anecdote_feed">AnecdoteFeedActivity</string>
+    <string name="title_activity_anecdote">AnecdoteActivity</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
@@ -93,4 +94,5 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
