@@ -1,14 +1,26 @@
-package xmlparser;
+package com.esgi.agnoscere.xmlparser;
 
-public abstract class Post {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
+public abstract class Post implements Serializable{
 	
 	protected final String id;
 	protected final String autor;
 	protected String contents;
 	protected final String date;
-	
-	
-	public String getContent() {
+
+    public Post(String id, String autor,String contents,String date ) {
+        this.id = id;
+        this.autor = autor;
+        this.contents = contents;
+        this.date = date;
+
+    }
+
+    public String getContent() {
 		return contents;
 	}
 	public void setContent(String contents) {
@@ -23,13 +35,21 @@ public abstract class Post {
 	public String getDate() {
 		return date;
 	}
-	public Post(String id, String autor,String contents,String date ) {
-		this.id = id;
-		this.autor = autor;
-		this.contents = contents;
-		this.date = date;
-		
-	}
-	
-	
+
+   /* @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(autor);
+        dest.writeString(contents);
+        dest.writeString(date);
+    }
+
+    protected Post(Parcel in) {
+        id = in.readString();
+        autor = in.readString();
+        contents = in.readString();
+        date = in.readString();
+    }
+*/
+
 }

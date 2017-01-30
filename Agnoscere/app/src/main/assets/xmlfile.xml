@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<anecdotes>
+  <anecdote id="1">
+    <autor>VARTAN KOKO</autor>
+    <title>Anecdote numero 1</title>
+    <category>Anecdote</category>
+    <contents>Ceci est l'anecdote numero 1 Elle est vraiment geniale j'adore l'android ah non franchement c'est de la merde on a trop de projet il faut que je teste mon code</contents>
+    <date>Date 1</date>
+    <ididntknowvote>0</ididntknowvote>
+    <iknewvote>24</iknewvote>
+    <videoid />
+    <imagelink>lien de l'image</imagelink>
+    <sources>
+      <source>www.google.fr</source>
+    </sources>
+    <comments>
+      <comment idcomment="1_1">
+        <autorcomment>Nicolas</autorcomment>
+        <contentscomment>j'edite un com2</contentscomment>
+        <datecomment>09:31 13/12/2016</datecomment>
+      </comment>
+      <comment idcomment="1_2">
+        <autorcomment>Nicolas</autorcomment>
+        <contentscomment>j'edite un com2</contentscomment>
+        <datecomment>09:34 13/12/2016</datecomment>
+      </comment>
+      <comment idcomment="1_3">
+        <autorcomment>Nicolas</autorcomment>
+        <contentscomment>j'edite un com2</contentscomment>
+        <datecomment>09:35 13/12/2016</datecomment>
+      </comment>
+      <comment idcomment="1_4">
+        <autorcomment>Nicolas</autorcomment>
+        <contentscomment>j'edite un com2</contentscomment>
+        <datecomment>09:35 13/12/2016</datecomment>
+      </comment>
+    </comments>
+  </anecdote>
+  <anecdote id="2">
+    <autor>Auteur 2</autor>
+    <title>Anecdote numero 2</title>
+    <category>Sciences</category>
+    <contents>A le batard</contents>
+    <date>Date 2</date>
+    <ididntknowvote>21</ididntknowvote>
+    <iknewvote>0</iknewvote>
+    <videoid />
+    <imagelink />
+    <sources>
+      <source>www.google.fr</source>
+      <source>www.wikipedia.fr</source>
+    </sources>
+    <comments>
+      <comment idcomment="2_1">
+        <autorcomment>Auteur commentaire 1 annecdote 2</autorcomment>
+        <contentscomment>Ceci est le commentaire 1 de l'annecdote 2</contentscomment>
+        <datecomment>Date commentaire 1 annecdote 2</datecomment>
+      </comment>
+    </comments>
+  </anecdote>
+  <anecdote id="3">
+    <autor>Auteur 3</autor>
+    <title>Anecdote numero 3</title>
+    <category>Anecdote</category>
+    <contents>Ceci est l'anecdote numero 3</contents>
+    <date>Date 3</date>
+    <ididntknowvote>0</ididntknowvote>
+    <iknewvote>0</iknewvote>
+    <videoid>abcd</videoid>
+    <imagelink />
+    <sources>
+      <source>www.wikipedia.fr</source>
+    </sources>
+    <comments>
+      <comment idcomment="3_1">
+        <autorcomment>Nicolas</autorcomment>
+        <contentscomment>j'edite un com</contentscomment>
+        <datecomment>09:31 13/12/2016</datecomment>
+      </comment>
+      <comment idcomment="3_2">
+        <autorcomment>Nicolas</autorcomment>
+        <contentscomment>j'edite un com</contentscomment>
+        <datecomment>09:34 13/12/2016</datecomment>
+      </comment>
+      <comment idcomment="3_3">
+        <autorcomment>Nicolas</autorcomment>
+        <contentscomment>j'edite un com</contentscomment>
+        <datecomment>09:35 13/12/2016</datecomment>
+      </comment>
+    </comments>
+  </anecdote>
+  <anecdote id="4">
+    <autor>Vartan</autor>
+    <title>VartanTest</title>
+    <category>Quentin</category>
+    <contents>ContenuDeQuentin</contents>
+    <date>09:31 13/12/2016</date>
+    <ididntknowvote>0</ididntknowvote>
+    <iknewvote>0</iknewvote>
+    <videoid>ID VIDEO NICOLAS</videoid>
+    <imagelink>Y a pas d'image</imagelink>
+    <sources>
+      <source>www.sourcesnumero1.com</source>
+      <source>www.sourcesnumero2.com</source>
+    </sources>
+    <comments />
+  </anecdote>
+  <anecdote id="5">
+    <autor>Vartan</autor>
+    <title>VartanTest</title>
+    <category>Quentin</category>
+    <contents>ContenuDeQuentin</contents>
+    <date>09:34 13/12/2016</date>
+    <ididntknowvote>0</ididntknowvote>
+    <iknewvote>0</iknewvote>
+    <videoid>ID VIDEO NICOLAS</videoid>
+    <imagelink>Y a pas d'image</imagelink>
+    <sources>
+      <source>www.sourcesnumero1.com</source>
+      <source>www.sourcesnumero2.com</source>
+    </sources>
+    <comments>
+      <comment idcomment="5_1">
+        <autorcomment>Nicolas</autorcomment>
+        <contentscomment>j'edite un com2</contentscomment>
+        <datecomment>09:36 13/12/2016</datecomment>
+      </comment>
+      <comment idcomment="5_2">
+        <autorcomment>Nicolas</autorcomment>
+        <contentscomment>j'edite un com2</contentscomment>
+        <datecomment>10:01 13/12/2016</datecomment>
+      </comment>
+      <comment idcomment="5_3">
+        <autorcomment>Nicolas</autorcomment>
+        <contentscomment>j'edite un com2</contentscomment>
+        <datecomment>10:02 13/12/2016</datecomment>
+      </comment>
+      <comment idcomment="5_4">
+        <autorcomment>Nicolas</autorcomment>
+        <contentscomment>j'edite un com2</contentscomment>
+        <datecomment>10:14 13/12/2016</datecomment>
+      </comment>
+      <comment idcomment="5_5">
+        <autorcomment>Nicolas</autorcomment>
+        <contentscomment>j'edite un com2</contentscomment>
+        <datecomment>10:19 13/12/2016</datecomment>
+      </comment>
+      <comment idcomment="5_6">
+        <autorcomment>Nicolas</autorcomment>
+        <contentscomment>je test l'add</contentscomment>
+        <datecomment>10:37 11/01/2017</datecomment>
+      </comment>
+    </comments>
+  </anecdote>
+  <anecdote id="6">
+    <autor>Vartan</autor>
+    <title>VartanTest</title>
+    <category>Quentin</category>
+    <contents>ContenuDeQuentin</contents>
+    <date>09:35 13/12/2016</date>
+    <ididntknowvote>3</ididntknowvote>
+    <iknewvote>3</iknewvote>
+    <videoid>ID VIDEO NICOLAS</videoid>
+    <imagelink>Y a pas d'image</imagelink>
+    <sources>
+      <source>www.sourcesnumero1.com</source>
+      <source>www.sourcesnumero2.com</source>
+    </sources>
+    <comments>
+      <comment idcomment="6_1">
+        <autorcomment>Nicolas</autorcomment>
+        <contentscomment>j'edite un com</contentscomment>
+        <datecomment>09:35 13/12/2016</datecomment>
+      </comment>
+      <comment idcomment="6_2">
+        <autorcomment>Nicolas</autorcomment>
+        <contentscomment>j'edite un com</contentscomment>
+        <datecomment>09:36 13/12/2016</datecomment>
+      </comment>
+    </comments>
+  </anecdote>
+  <anecdote id="7">
+    <autor>Vartan</autor>
+    <title>VartanTest</title>
+    <category>Quentin</category>
+    <contents>ContenuDeQuentin</contents>
+    <date>09:35 13/12/2016</date>
+    <ididntknowvote>0</ididntknowvote>
+    <iknewvote>0</iknewvote>
+    <videoid>ID VIDEO NICOLAS</videoid>
+    <imagelink>Y a pas d'image</imagelink>
+    <sources>
+      <source>www.sourcesnumero1.com</source>
+      <source>www.sourcesnumero2.com</source>
+    </sources>
+    <comments />
+  </anecdote>
+  <anecdote id="8">
+    <autor>Vartan</autor>
+    <title>VartanTest</title>
+    <category>Quentin</category>
+    <contents>ContenuDeQuentin</contents>
+    <date>09:36 13/12/2016</date>
+    <ididntknowvote>0</ididntknowvote>
+    <iknewvote>0</iknewvote>
+    <videoid>ID VIDEO NICOLAS</videoid>
+    <imagelink>Y a pas d'image</imagelink>
+    <sources>
+      <source>www.sourcesnumero1.com</source>
+      <source>www.sourcesnumero2.com</source>
+    </sources>
+    <comments />
+  </anecdote>
+  <anecdote id="9">
+    <autor>a</autor>
+    <title>b</title>
+    <category>d</category>
+    <contents>e</contents>
+    <date>10:37 11/01/2017</date>
+    <ididntknowvote>0</ididntknowvote>
+    <iknewvote>0</iknewvote>
+    <videoid>f</videoid>
+    <imagelink>g</imagelink>
+    <sources />
+    <comments />
+  </anecdote>
+</anecdotes>
