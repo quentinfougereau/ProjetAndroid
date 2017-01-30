@@ -1,4 +1,4 @@
-package main;
+package com.esgi.agnoscere.xmlparser;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -17,8 +17,8 @@ import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
-import constants.Vote;
-import constants.XMLConstants;
+import com.esgi.agnoscere.constants.Vote;
+import com.esgi.agnoscere.constants.XMLConstants;
 
 public class XMLParser {
 
@@ -269,6 +269,7 @@ public class XMLParser {
 	public static void main(String[] args) {
 		Document xmlDocument = XMLParser
 				.loadXMLDocument("xmlfolder/xmlfile.xml");
+		/*
 		XMLParser.postAnecdote(xmlDocument,"a","b","d","e","f","g",null);
 		XMLParser.postComment(xmlDocument, 5,"Nicolas","je test l'add");
 
@@ -276,6 +277,7 @@ public class XMLParser {
 		XMLParser.editAnecdote(xmlDocument, 2, "A le batard");
 		XMLParser.iDidntKnowIt(xmlDocument, 6);
 		XMLParser.iKnewIt(xmlDocument, 6);
+		*/
 		ArrayList<Anecdote> anecdoteArray = XMLParser.parseXML(xmlDocument, "");
 		XMLParser.displayAnecdotes(anecdoteArray);
 

@@ -1,7 +1,7 @@
 package com.esgi.agnoscere.xmlparser;
 import java.util.ArrayList;
 
-import xmlparser.Post;
+import com.esgi.agnoscere.xmlparser.Post;
 
 public class Anecdote extends Post {
 	private final String title;
