@@ -224,4 +224,17 @@
     <sources />
     <comments />
   </anecdote>
+  <anecdote id="10">
+  <autor>John Do</autor>
+  <title>Foo Bar</title>
+  <category>Test Category</category>
+  <contents>Lorem ipsum dolor sit amet</contents>
+  <date>31/01/2017</date>
+  <ididntknowvote>27</ididntknowvote>
+  <iknewvote>04</iknewvote>
+  <videoid>f</videoid>
+  <imagelink>g</imagelink>
+  <sources />
+  <comments />
+</anecdote>
 </anecdotes>

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.esgi.agnoscere.anecdoteview.CommentAdapter;
 import com.esgi.agnoscere.xmlparser.Anecdote;
@@ -33,6 +34,15 @@ public class AnecdoteActivity2 extends AppCompatActivity {
         setAnecdoteTextView();
         setAnecdoteAuthor();
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Toast.makeText(this, "Test", Toast.LENGTH_SHORT).show();
+        Anecdote anecdote = (Anecdote) getIntent().getSerializableExtra("anecdote");
+        System.out.println(anecdote.getAutor());
+        System.out.println(anecdote.getIdidntknowvote());
     }
 
     private void setAnecdoteAuthor() {
