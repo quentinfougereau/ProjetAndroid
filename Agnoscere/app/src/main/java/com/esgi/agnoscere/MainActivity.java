@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
         }
         ArrayList<Anecdote> annecdote = XMLParser.parseXML(xmlDocument, "");
         Intent intent =  new Intent(this, AnecdoteActivity2.class);
+
+        intent.putExtra("document",xmlDocument);
         intent.putExtra("anecdote", annecdote.get(0));
         startActivity(intent);
     }

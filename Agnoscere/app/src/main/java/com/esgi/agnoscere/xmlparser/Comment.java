@@ -1,5 +1,7 @@
 package com.esgi.agnoscere.xmlparser;
 
+
+
 import android.os.Parcel;
 import android.os.Parcelable;
 

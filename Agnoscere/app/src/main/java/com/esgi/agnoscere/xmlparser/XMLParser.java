@@ -1,6 +1,5 @@
 package com.esgi.agnoscere.xmlparser;
 
-
 import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -10,9 +9,12 @@ import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+
+import java.io.OutputStreamWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -23,11 +25,19 @@ import java.util.List;
 import com.esgi.agnoscere.constants.Vote;
 import com.esgi.agnoscere.constants.XMLConstants;
 
+
+
+import android.content.Context;
 import android.content.res.Resources;
+
+import static android.content.Context.MODE_APPEND;
 
 public class XMLParser {
 
-	public static Document loadXMLDocument(InputStream is) {
+    private FileOutputStream fOut;
+    private OutputStreamWriter osw;
+
+    public static Document loadXMLDocument(InputStream is) {
 		try {
 			//InputStream is = getAssets().open(xmlPath);
 			return new SAXBuilder().build(is);
@@ -260,11 +270,13 @@ public class XMLParser {
 			e.printStackTrace();
 		}
 	}
+
 	private static void writeXML(Document document) {
 		XMLOutputter xmlOutput = new XMLOutputter();
 		xmlOutput.setFormat(Format.getPrettyFormat());
 		try {
-			xmlOutput.output(document, new FileWriter(document.getBaseURI()
+
+            xmlOutput.output(document, new FileWriter(document.getBaseURI()
 					.replaceFirst("file:/", "")));
 		} catch (IOException e) {
 			// TODO Bloc catch auto-g�n�r�
@@ -273,8 +285,8 @@ public class XMLParser {
 	}
 
 	public static void main(String[] args) {
-		/*
-		Document xmlDocument = XMLParser
+
+		/*Document xmlDocument = XMLParser
 				.loadXMLDocument("xmlfolder/xmlfile.xml");
 
 		XMLParser.postAnecdote(xmlDocument,"a","b","d","e","f","g",null);
@@ -286,7 +298,8 @@ public class XMLParser {
 		XMLParser.iKnewIt(xmlDocument, 6);
 
 		ArrayList<Anecdote> anecdoteArray = XMLParser.parseXML(xmlDocument, "");
-		XMLParser.displayAnecdotes(anecdoteArray);
-		*/
+
+		XMLParser.displayAnecdotes(anecdoteArray);*/
+
 	}
 }
