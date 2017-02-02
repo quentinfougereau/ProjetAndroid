@@ -1,6 +1,7 @@
 package com.esgi.agnoscere;
 
 import android.content.Intent;
+import android.provider.DocumentsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,12 +14,18 @@ import com.esgi.agnoscere.xmlparser.Anecdote;
 import com.esgi.agnoscere.xmlparser.Comment;
 import com.esgi.agnoscere.xmlparser.XMLParser;
 
+import org.jdom2.Document;
+
 import java.util.List;
 
 public class AnecdoteActivity2 extends AppCompatActivity {
 
     ListView mListView;
     Anecdote mAnecdote;
+    Intent mIntent;
+    Document mDocument;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +33,9 @@ public class AnecdoteActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_anecdote2);
 
         mListView = (ListView) findViewById(R.id.listView);
-        Intent intent = getIntent();
-        mAnecdote = (Anecdote) intent.getSerializableExtra("anecdote");
+        mIntent = getIntent();
+        mAnecdote = (Anecdote) mIntent.getSerializableExtra("anecdote");
+        mDocument = (Document) mIntent.getSerializableExtra("document");
 
         setCommentList();
         setAnecdoteTextView();
@@ -57,11 +65,11 @@ public class AnecdoteActivity2 extends AppCompatActivity {
 
     public void iKnewIt(View view)
     {
-        //XMLParser.iKnewIt();
+        XMLParser.iKnewIt(mDocument, Integer.parseInt(mAnecdote.getId()));
     }
 
     public void iDidntKnewIt()
     {
-        //XMLParser.iDidntKnowIt();
+        XMLParser.iDidntKnowIt(mDocument, Integer.parseInt(mAnecdote.getId()));
     }
 }
