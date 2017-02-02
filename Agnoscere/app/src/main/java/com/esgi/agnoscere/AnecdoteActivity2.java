@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -18,12 +19,13 @@ import org.jdom2.Document;
 
 import java.util.List;
 
-public class AnecdoteActivity2 extends AppCompatActivity {
+public class AnecdoteActivity2 extends AppCompatActivity{
 
-    ListView mListView;
-    Anecdote mAnecdote;
-    Intent mIntent;
-    Document mDocument;
+    private ListView mListView;
+    private Anecdote mAnecdote;
+    private Document mDocument;
+    private Button mIKnewItButton;
+    private Button miDidntKnowit;
 
 
 
@@ -33,15 +35,31 @@ public class AnecdoteActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_anecdote2);
 
         mListView = (ListView) findViewById(R.id.listView);
-        mIntent = getIntent();
-        mAnecdote = (Anecdote) mIntent.getSerializableExtra("anecdote");
-        mDocument = (Document) mIntent.getSerializableExtra("document");
+        Intent Intent = getIntent();
+        mAnecdote = (Anecdote) Intent.getSerializableExtra("anecdote");
+        mDocument = (Document) Intent.getSerializableExtra("document");
+
+        mIKnewItButton = (Button) findViewById(R.id.jlsd);
+        miDidntKnowit = (Button) findViewById(R.id.jmcmb);
+
+        mIKnewItButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                iKnewIt();
+            }
+        });
+
+        miDidntKnowit.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                iDidntKnowIt();
+            }
+        });
 
         setCommentList();
         setAnecdoteTextView();
         setAnecdoteAuthor();
 
     }
+
 
     private void setAnecdoteAuthor() {
         TextView anecdoteAuthor = (TextView) findViewById(R.id.author_text);
@@ -63,12 +81,12 @@ public class AnecdoteActivity2 extends AppCompatActivity {
         anecdoteText.setText(mAnecdote.getContent());
     }
 
-    public void iKnewIt(View view)
+    public void iKnewIt()
     {
         XMLParser.iKnewIt(mDocument, Integer.parseInt(mAnecdote.getId()));
     }
 
-    public void iDidntKnewIt()
+    public void iDidntKnowIt()
     {
         XMLParser.iDidntKnowIt(mDocument, Integer.parseInt(mAnecdote.getId()));
     }

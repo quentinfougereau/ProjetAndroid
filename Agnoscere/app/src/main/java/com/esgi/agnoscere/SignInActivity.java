@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -22,6 +23,8 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
     //Signing Options
     private GoogleSignInOptions gso;
 
+    private Button offLineButton;
+
     //google api client
     private GoogleApiClient mGoogleApiClient;
 
@@ -39,12 +42,16 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
         signInButton = (SignInButton) findViewById(R.id.sign_in_button);
         signInButton.setSize(SignInButton.SIZE_STANDARD);
 
+        offLineButton = (Button) findViewById(R.id.offline_button);
+
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
 
         signInButton.setOnClickListener(this);
+        offLineButton.setOnClickListener(this);
+
     }
 
 
@@ -66,6 +73,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
                 break;
             case R.id.offline_button:
                 offline();
+                break;
         }
     }
 
