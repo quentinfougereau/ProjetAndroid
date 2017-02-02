@@ -91,11 +91,11 @@ public class AnecdoteActivity2 extends AppCompatActivity{
 
     public void iKnewIt()
     {
-        XMLParser.iKnewIt(mDocument, Integer.parseInt(mAnecdote.getId()));
+        XMLParser.iKnewIt(getBaseContext(),mDocument, Integer.parseInt(mAnecdote.getId()));
     }
 
     public void iDidntKnowIt()
     {
-        XMLParser.iDidntKnowIt(mDocument, Integer.parseInt(mAnecdote.getId()));
+        XMLParser.iDidntKnowIt(getBaseContext(),mDocument, Integer.parseInt(mAnecdote.getId()));
     }
 }
