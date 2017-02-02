@@ -48,6 +48,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:onClick="iDidntKnewIt"
             android:text="JLSD"
             android:id="@+id/jlsd"
             />

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.esgi.agnoscere.anecdotefeed.AnecdoteFeedActivity;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -78,7 +79,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
     }
 
     private void offline() {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, AnecdoteFeedActivity.class);
         intent.putExtra("user","Anonymous");
         startActivity(intent);
     }
@@ -100,7 +101,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
             // Signed in successfully, show authenticated UI.
 
             GoogleSignInAccount acct = result.getSignInAccount();
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, AnecdoteFeedActivity.class);
             intent.putExtra("user",acct.getDisplayName());
             startActivity(intent);
         } else {
