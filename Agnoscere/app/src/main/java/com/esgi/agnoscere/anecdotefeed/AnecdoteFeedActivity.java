@@ -7,12 +7,10 @@ import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.esgi.agnoscere.AnecdoteActivity2;
-import com.esgi.agnoscere.CreateAnecdoteActivity;
 import com.esgi.agnoscere.R;
 import com.esgi.agnoscere.anecdotefeed.dummy.DummyContent;
 import com.esgi.agnoscere.xmlparser.Anecdote;
@@ -20,7 +18,18 @@ import com.esgi.agnoscere.xmlparser.XMLParser;
 
 import org.jdom2.Document;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -34,7 +43,7 @@ public class AnecdoteFeedActivity extends AppCompatActivity implements AnecdoteF
         super.onCreate(savedInstanceState);
         System.out.println("LOG : onCreate");
         setContentView(R.layout.activity_anecdote_feed);
-
+        copyByte();
         AnecdoteItemFragment anecdoteItemFragment = new AnecdoteItemFragment();
         nb_anecdote = getAnecdotes().size();
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -42,6 +51,33 @@ public class AnecdoteFeedActivity extends AppCompatActivity implements AnecdoteF
         fragmentTransaction.add(R.id.fragmentContainer, anecdoteItemFragment);
         fragmentTransaction.commit();
 
+    }
+        public void copyByte() {
+            File f= new File(getFilesDir(),"xmlfile.xml");
+            if(!f.exists()){
+                BufferedReader in = null;
+                BufferedWriter out = null;
+
+            try {
+                Log.i("in", "copyByte: in");
+                in =new BufferedReader(new InputStreamReader(getAssets().open("xmlfile.xml")));
+                out = new BufferedWriter(new FileWriter(f));
+
+                int octet;
+                String line="";
+                // La méthode read renvoie -1 dès qu'il n'y a plus rien à lire
+                while ((line = in.readLine())!=null) {
+                    out.write(line);
+                }
+               in.close();
+                out.flush();
+                out.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
@@ -97,32 +133,11 @@ public class AnecdoteFeedActivity extends AppCompatActivity implements AnecdoteF
 
     public ArrayList<Anecdote> getAnecdotes() {
         try {
-            xmlDocument = XMLParser.loadXMLDocument(getAssets().open("xmlfile.xml"));
+            xmlDocument = XMLParser.loadXMLDocument(new FileInputStream(new File(getFilesDir(),"xmlfile.xml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
         ArrayList<Anecdote> anecdoteArray = XMLParser.parseXML(xmlDocument, "");
         return anecdoteArray;
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_bar, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_settings:
-                Intent intent = new Intent(this, CreateAnecdoteActivity.class);
-                startActivity(intent);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-
-
 }
