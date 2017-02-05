@@ -6,6 +6,10 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
 
     <application
         android:allowBackup="true"
@@ -20,17 +24,16 @@
         <activity android:name=".SignInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".anecdotefeed.AnecdoteFeedActivity"
-            android:label="@string/title_activity_anecdote_feed"></activity>
+            android:label="@string/title_activity_anecdote_feed">
+        </activity>
 
-        <uses-permission android:name="android.permission.INTERNET" />
-
-        <activity android:name=".CreateAnecdoteActivity"></activity>
+        <uses-permission android:name="android.permission.INTERNET"/>
     </application>
 
 </manifest>
