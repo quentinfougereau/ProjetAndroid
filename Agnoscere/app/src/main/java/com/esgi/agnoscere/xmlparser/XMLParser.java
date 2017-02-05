@@ -10,10 +10,12 @@ import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -35,8 +37,9 @@ public class XMLParser {
 
     public static Document loadXMLDocument(InputStream is) {
         try {
-            //InputStream is = getAssets().open(xmlPath);
-            return new SAXBuilder().build(is);
+            Document doc= new SAXBuilder().build(is);
+            is.close();
+            return doc;
         } catch (JDOMException e) {
             // TODO Bloc catch auto-g�n�r�
             e.printStackTrace();
@@ -44,6 +47,7 @@ public class XMLParser {
             // TODO Bloc catch auto-g�n�r�
             e.printStackTrace();
         }
+
         return null;
     }
 
@@ -259,8 +263,7 @@ public class XMLParser {
         XMLOutputter xmlOutput = new XMLOutputter();
         xmlOutput.setFormat(Format.getPrettyFormat());
         try {
-            xmlOutput.outputElementContent(element, new FileWriter(document.getBaseURI()
-                    .replaceFirst("file:/", "")));
+            xmlOutput.outputElementContent(element, new FileOutputStream(new File(context.getFilesDir(),"xmlfile.xml")));
         } catch (IOException e) {
             // TODO Bloc catch auto-g�n�r�
             e.printStackTrace();
@@ -271,8 +274,7 @@ public class XMLParser {
         XMLOutputter xmlOutput = new XMLOutputter();
         xmlOutput.setFormat(Format.getPrettyFormat());
         try {
-            xmlOutput.output(document, new FileWriter(document.getBaseURI()
-                    .replaceFirst("file:/", "")));
+            xmlOutput.output(document, new FileOutputStream(new File(context.getFilesDir(),"xmlfile.xml")));
         } catch (IOException e) {
             // TODO Bloc catch auto-g�n�r�
             e.printStackTrace();
