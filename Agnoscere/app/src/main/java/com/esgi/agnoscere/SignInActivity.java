@@ -15,12 +15,16 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+
 
 public class SignInActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
 
     private static final int RC_SIGN_IN = 100;
-    //Signin button
     private SignInButton signInButton;
+
+    private Button signOutButton;
     //Signing Options
     private GoogleSignInOptions gso;
 
@@ -44,6 +48,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
         signInButton.setSize(SignInButton.SIZE_STANDARD);
 
         offLineButton = (Button) findViewById(R.id.offline_button);
+        signOutButton = (Button) findViewById(R.id.sign_out_button);
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
@@ -52,6 +57,7 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
 
         signInButton.setOnClickListener(this);
         offLineButton.setOnClickListener(this);
+        signOutButton.setOnClickListener(this);
 
     }
 
@@ -75,7 +81,21 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
             case R.id.offline_button:
                 offline();
                 break;
+            case R.id.sign_out_button:
+                signOut();
+                break;
         }
+    }
+
+    private void signOut() {
+        Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
+                new ResultCallback<Status>() {
+                    @Override
+                    public void onResult(Status status) {
+                        updateUI(false);
+                    }
+                });
+        Toast.makeText(this, "Disconnected", Toast.LENGTH_LONG).show();
     }
 
     private void offline() {
@@ -103,10 +123,23 @@ public class SignInActivity extends AppCompatActivity implements GoogleApiClient
             GoogleSignInAccount acct = result.getSignInAccount();
             Intent intent = new Intent(this, AnecdoteFeedActivity.class);
             intent.putExtra("user",acct.getDisplayName());
+            updateUI(true);
             startActivity(intent);
         } else {
+            updateUI(false);
             Toast.makeText(this, "Login Failed", Toast.LENGTH_LONG).show();
         }
 
+    }
+
+
+    private void updateUI(boolean signedIn) {
+        if (signedIn) {
+            signInButton.setVisibility(View.GONE);
+            signOutButton.setVisibility(View.VISIBLE);
+        } else {
+            signInButton.setVisibility(View.VISIBLE);
+            signOutButton.setVisibility(View.GONE);
+        }
     }
 }

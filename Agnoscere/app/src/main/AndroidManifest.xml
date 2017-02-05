@@ -20,16 +20,17 @@
         <activity android:name=".SignInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".anecdotefeed.AnecdoteFeedActivity"
-            android:label="@string/title_activity_anecdote_feed">
-        </activity>
+            android:label="@string/title_activity_anecdote_feed"></activity>
 
-        <uses-permission android:name="android.permission.INTERNET"/>
+        <uses-permission android:name="android.permission.INTERNET" />
+
+        <activity android:name=".CreateAnecdoteActivity"></activity>
     </application>
 
 </manifest>

@@ -3,11 +3,17 @@ package com.esgi.agnoscere;
 import android.content.Intent;
 
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -22,6 +28,7 @@ import com.esgi.agnoscere.xmlparser.XMLParser;
 
 import org.jdom2.Document;
 
+import java.io.InputStream;
 import java.util.List;
 
 public class AnecdoteActivity2 extends AppCompatActivity{
@@ -65,6 +72,9 @@ public class AnecdoteActivity2 extends AppCompatActivity{
         setCommentList();
         setAnecdoteTextView();
         setAnecdoteAuthor();
+        setAnecdoteIknewit();
+        setmAnecdoteIDidntKnowit();
+        setAnecdoteTitle();
 
     }
 
@@ -88,6 +98,24 @@ public class AnecdoteActivity2 extends AppCompatActivity{
         anecdoteText.setText(mAnecdote.getContent());
     }
 
+    private void setAnecdoteIknewit()
+    {
+        TextView anecdoteText = (TextView) findViewById(R.id.textView_jlsd);
+        anecdoteText.setText(String.valueOf(mAnecdote.getIknewvote()));
+    }
+
+    private void setmAnecdoteIDidntKnowit()
+    {
+        TextView anecdoteText = (TextView) findViewById(R.id.textView_jmcmb);
+        anecdoteText.setText(String.valueOf(mAnecdote.getIdidntknowvote()));
+    }
+
+    private void setAnecdoteTitle()
+    {
+        TextView anecdoteText = (TextView) findViewById(R.id.anecdote_title);
+        anecdoteText.setText(String.valueOf(mAnecdote.getTitle()));
+    }
+
 
     public void iKnewIt()
     {
@@ -98,4 +126,38 @@ public class AnecdoteActivity2 extends AppCompatActivity{
     {
         XMLParser.iDidntKnowIt(getBaseContext(),mDocument, Integer.parseInt(mAnecdote.getId()));
     }
+
+
+    // AsyckTask to download image (url given )
+    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+        ImageView bmImage;
+
+        //constructor
+        public DownloadImageTask(ImageView bmImage) {
+            this.bmImage = bmImage;
+        }
+
+        // laoding picture and put it into bitmap
+        protected Bitmap doInBackground(String... urls) {
+            String urldisplay = urls[0];
+            Bitmap mIcon11 = null;
+            try {
+                InputStream in = new java.net.URL(urldisplay).openStream();
+                mIcon11 = BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+            return mIcon11;
+        }
+
+        //after downloading
+        protected void onPostExecute(Bitmap result) {
+            bmImage.setImageBitmap(result);
+        }
+    }
+
+
+
+
 }
