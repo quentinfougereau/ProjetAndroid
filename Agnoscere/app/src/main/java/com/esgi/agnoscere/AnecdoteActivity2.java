@@ -17,8 +17,6 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import android.widget.Toast;
-
 
 import com.esgi.agnoscere.anecdoteview.CommentAdapter;
 import com.esgi.agnoscere.xmlparser.Anecdote;
@@ -31,13 +29,13 @@ import org.jdom2.Document;
 import java.io.InputStream;
 import java.util.List;
 
-public class AnecdoteActivity2 extends AppCompatActivity{
+public class AnecdoteActivity2 extends AppCompatActivity implements View.OnClickListener{
 
     private ListView mListView;
     private Anecdote mAnecdote;
     private Document mDocument;
-    private Button mIKnewItButton;
-    private Button miDidntKnowit;
+    private EditText mEditText;
+    private String mAuthor;
 
 
     @Override
@@ -47,27 +45,22 @@ public class AnecdoteActivity2 extends AppCompatActivity{
 
         mListView = (ListView) findViewById(R.id.listView);
 
-        Intent Intent = getIntent();
-        mAnecdote = (Anecdote) Intent.getSerializableExtra("anecdote");
-        mDocument = (Document) Intent.getSerializableExtra("document");
-
-        mIKnewItButton = (Button) findViewById(R.id.jlsd);
-        miDidntKnowit = (Button) findViewById(R.id.jmcmb);
-
-        mIKnewItButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                iKnewIt();
-            }
-        });
-
-        miDidntKnowit.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                iDidntKnowIt();
-            }
-        });
-
         Intent intent = getIntent();
         mAnecdote = (Anecdote) intent.getSerializableExtra("anecdote");
+        mDocument = (Document) intent.getSerializableExtra("document");
+        mAuthor = intent.getStringExtra("user");
+
+        Button iKnewItButton = (Button) findViewById(R.id.jlsd);
+        Button iDidntKnowit = (Button) findViewById(R.id.jmcmb);
+        Button sendComment = (Button) findViewById(R.id.send_comment_button);
+
+        mEditText = (EditText) findViewById(R.id.comment_EditText);
+
+        iKnewItButton.setOnClickListener(this);
+        iDidntKnowit.setOnClickListener(this);
+        mEditText.setOnClickListener(this);
+        sendComment.setOnClickListener(this);
+
 
         setCommentList();
         setAnecdoteTextView();
@@ -76,6 +69,32 @@ public class AnecdoteActivity2 extends AppCompatActivity{
         setmAnecdoteIDidntKnowit();
         setAnecdoteTitle();
 
+        new DownloadImageTask((ImageView) findViewById(R.id.image_view))
+                .execute(mAnecdote.getImagelink());
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.jlsd:
+                iKnewIt();
+                break;
+            case R.id.jmcmb:
+                iDidntKnowIt();
+                break;
+            case R.id.comment_EditText:
+                mEditText.setText("");
+                break;
+            case R.id.send_comment_button:
+                writeComment();
+                break;
+        }
+
+    }
+
+    private void writeComment() {
+        XMLParser.postComment(getBaseContext(),mDocument,Integer.parseInt(mAnecdote.getId()),mAuthor,mEditText.getText().toString());
     }
 
     private void setAnecdoteAuthor() {
@@ -127,7 +146,6 @@ public class AnecdoteActivity2 extends AppCompatActivity{
         XMLParser.iDidntKnowIt(getBaseContext(),mDocument, Integer.parseInt(mAnecdote.getId()));
     }
 
-
     // AsyckTask to download image (url given )
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
         ImageView bmImage;
@@ -156,8 +174,5 @@ public class AnecdoteActivity2 extends AppCompatActivity{
             bmImage.setImageBitmap(result);
         }
     }
-
-
-
 
 }

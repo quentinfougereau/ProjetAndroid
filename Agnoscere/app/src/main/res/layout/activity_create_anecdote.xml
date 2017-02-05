@@ -10,21 +10,22 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.esgi.agnoscere.AnecdoteActivity2">
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/anecdote_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
 
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="titre"
             android:id="@+id/anecdote_title"
             />
 
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="categorie"
             android:id="@+id/categorie_editText"
@@ -33,38 +34,37 @@
 
         <EditText
             android:layout_below="@+id/categorie_editText"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="anecdotes"
             android:id="@+id/anecdote_text" />
 
         <EditText
             android:layout_below="@+id/anecdote_text"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="video link"
             android:id="@+id/video_id_text" />
 
         <EditText
             android:layout_below="@+id/video_id_text"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="image link"
             android:id="@+id/image_link_text" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/button_layout"
         android:layout_below="@+id/anecdote_layout"
-        android:orientation="horizontal">
-
+        android:orientation="vertical">
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Post"
             android:id="@+id/post_button"
             />

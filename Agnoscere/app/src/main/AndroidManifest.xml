@@ -32,8 +32,7 @@
             android:name=".anecdotefeed.AnecdoteFeedActivity"
             android:label="@string/title_activity_anecdote_feed">
         </activity>
-
-        <uses-permission android:name="android.permission.INTERNET"/>
+        <activity android:name=".CreateAnecdoteActivity"></activity>
     </application>
 
 </manifest>
