@@ -4,12 +4,12 @@
     <autor>VARTAN KOKO</autor>
     <title>Anecdote numero 1</title>
     <category>Anecdote</category>
-    <contents>Ceci est l'anecdote numero 1 Elle est vraiment geniale j'adore l'android ah non franchement c'est de la merde on a trop de projet il faut que je teste mon code</contents>
+    <contents>Ceci est l'anecdote numero 1 Elle est vraiment geniale j'adore l'android on a trop de projet il faut que je teste mon code</contents>
     <date>Date 1</date>
     <ididntknowvote>0</ididntknowvote>
     <iknewvote>24</iknewvote>
-    <videoid />
-    <imagelink>lien de l'image</imagelink>
+    <videoid></videoid>
+    <imagelink>http://img4.hostingpics.net/pics/118117logoCopie.png</imagelink>
     <sources>
       <source>www.google.fr</source>
     </sources>

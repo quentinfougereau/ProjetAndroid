@@ -11,18 +11,43 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.esgi.agnoscere.AnecdoteActivity2">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/image_viewLayout"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:scaleType="fitXY"
+            android:id="@+id/image_view"
+            />
+    </LinearLayout>
+
     <RelativeLayout
         android:id="@+id/anecdote_layout"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/image_viewLayout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="titre"
+            android:id="@+id/anecdote_title"
+            />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="VARTAN KOKO"
             android:id="@+id/author_text"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_below="@+id/anecdote_title"
+            />
 
         <TextView
             android:layout_below="@+id/author_text"
@@ -45,6 +70,15 @@
             android:text="JMCMB"
             android:id="@+id/jmcmb"
             />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/textView_jmcmb"
+            android:layout_weight="1" />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -52,11 +86,43 @@
             android:text="JLSD"
             android:id="@+id/jlsd"
             />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/textView_jlsd"
+            android:layout_weight="1" />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/addcomment_layout"
+        android:layout_below="@+id/button_layout"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <EditText
+            android:id="@+id/comment_EditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.00"
+            android:text="Write comment..."
+            />
+        <Button
+            android:id="@+id/send_comment_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send"/>
+
+    </LinearLayout>
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button_layout"
+        android:layout_below="@+id/addcomment_layout"
         android:layout_alignParentBottom="true">
         <ListView
             android:id="@+id/listView"

@@ -20,6 +20,8 @@ import com.esgi.agnoscere.xmlparser.XMLParser;
 
 import org.jdom2.Document;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -79,7 +81,7 @@ public class AnecdoteItemFragment extends Fragment {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
             //recyclerView.setAdapter(new MyAnecdoteItemRecyclerViewAdapter(DummyContent.ITEMS, mListener));
-            recyclerView.setAdapter(new MyAnecdoteItemRecyclerViewAdapter(getAnecdotes(), mListener));
+            recyclerView.setAdapter(new MyAnecdoteItemRecyclerViewAdapter(getAnecdotes(context), mListener));
         }
         return view;
     }
@@ -118,11 +120,10 @@ public class AnecdoteItemFragment extends Fragment {
         mListener = null;
     }
 
-    public ArrayList<Anecdote> getAnecdotes() {
-
+    public ArrayList<Anecdote> getAnecdotes(Context context) {
         Document xmlDocument = null;
         try {
-            xmlDocument = XMLParser.loadXMLDocument(getActivity().getAssets().open("xmlfile.xml"));
+            xmlDocument = XMLParser.loadXMLDocument(new FileInputStream(new File(context.getFilesDir(),"xmlfile.xml")));
         } catch (IOException e) {
             e.printStackTrace();
         }

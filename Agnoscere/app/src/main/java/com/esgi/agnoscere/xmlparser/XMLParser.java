@@ -14,6 +14,7 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -27,9 +28,7 @@ import com.esgi.agnoscere.constants.XMLConstants;
 
 
 import android.content.Context;
-import android.content.res.Resources;
 
-import static android.content.Context.MODE_APPEND;
 
 public class XMLParser {
 
@@ -38,8 +37,9 @@ public class XMLParser {
 
     public static Document loadXMLDocument(InputStream is) {
         try {
-            //InputStream is = getAssets().open(xmlPath);
-            return new SAXBuilder().build(is);
+            Document doc= new SAXBuilder().build(is);
+            is.close();
+            return doc;
         } catch (JDOMException e) {
             // TODO Bloc catch auto-g�n�r�
             e.printStackTrace();
@@ -47,6 +47,7 @@ public class XMLParser {
             // TODO Bloc catch auto-g�n�r�
             e.printStackTrace();
         }
+
         return null;
     }
 
@@ -127,7 +128,7 @@ public class XMLParser {
             System.out.println(a.toString());
         }
     }
-    public static void postVote(Document document,int anecdoteId, Vote votecase){
+    public static void postVote(Context context,Document document,int anecdoteId, Vote votecase){
         String xmlVoteCase=votecase==Vote.IDIDNTKNOW?XMLConstants.IDIDNTKNOWVOTE_ANECDOTE:XMLConstants.IKNEWVOTE_ANECDOTE;
 
         Element root = document.getRootElement();
@@ -149,17 +150,17 @@ public class XMLParser {
             }
 
         }
-        writeXML(document);
+        writeXML(context,document);
     }
 
-    public static void iKnewIt(Document document, int anecdoteId) {
-        postVote(document,anecdoteId,Vote.IKNEW);
+    public static void iKnewIt(Context context,Document document, int anecdoteId) {
+        postVote(context,document,anecdoteId,Vote.IKNEW);
     }
-    public static void iDidntKnowIt(Document document, int anecdoteId) {
-        postVote(document,anecdoteId,Vote.IDIDNTKNOW);
+    public static void iDidntKnowIt(Context context,Document document, int anecdoteId) {
+        postVote(context,document,anecdoteId,Vote.IDIDNTKNOW);
 
     }
-    public static void postComment(Document document, int anecdoteId,String autor,String contents){
+    public static void postComment(Context context,Document document, int anecdoteId,String autor,String contents){
         {
             Element root = document.getRootElement();
             List<Element> listAnecodote = root
@@ -177,7 +178,7 @@ public class XMLParser {
                     Element newCom = createElementComment(anecdoteId, autor,
                             contents, id);
                     elementComments.addContent(newCom);
-                    writeElementXML(elementComments,document);
+                    writeXML(context,document);
                     find=true;
                 }
             }
@@ -199,7 +200,7 @@ public class XMLParser {
     private static String createDateXML() {
         return new SimpleDateFormat("hh:mm dd/MM/yyyy").format(new Date());
     }
-    public static void postAnecdote(Document document,String autor,String title,String category,String contents,String videoid,String imagelink,ArrayList<String> sources){
+    public static void postAnecdote(Context context,Document document,String autor,String title,String category,String contents,String videoid,String imagelink,ArrayList<String> sources){
         Element root= document.getRootElement();
         List<Element> listAnecdotes= root.getChildren(XMLConstants.ANECDOTE_ANECDOTE);
         Iterator<Element> it= listAnecdotes.iterator();
@@ -207,7 +208,7 @@ public class XMLParser {
         Element newAnecdote = createElementAnecdote(autor, title, category,
                 contents, videoid, imagelink, sources, id);
         root.addContent(newAnecdote);
-        writeElementXML(newAnecdote,document);
+        writeXML(context,document);
     }
 
     private static Element createElementAnecdote(String autor, String title,
@@ -243,7 +244,7 @@ public class XMLParser {
     }
 
 
-    public static void editAnecdote(Document document, int anecdoteId, String contents){
+    public static void editAnecdote(Context context,Document document, int anecdoteId, String contents){
         Element root = document.getRootElement();
         List<Element> listElements= root.getChildren(XMLConstants.ANECDOTE_ANECDOTE);
         Iterator<Element> it= listElements.iterator();
@@ -253,30 +254,27 @@ public class XMLParser {
             if (element.getAttributeValue(XMLConstants.ID_ATTRIBUTE_ANECDOTE)
                     .equals(String.valueOf(anecdoteId))) {
                 element.getChild(XMLConstants.CONTENTS_ANECDOTE).setText(contents);
-                writeElementXML(element,document);
+                writeXML(context,document);
             }
 
         }
     }
-    private static void writeElementXML(Element element,Document document){
+    private static void writeElementXML(Context context,Element element,Document document){
         XMLOutputter xmlOutput = new XMLOutputter();
         xmlOutput.setFormat(Format.getPrettyFormat());
         try {
-            xmlOutput.outputElementContent(element, new FileWriter(document.getBaseURI()
-                    .replaceFirst("file:/", "")));
+            xmlOutput.outputElementContent(element, new FileOutputStream(new File(context.getFilesDir(),"xmlfile.xml")));
         } catch (IOException e) {
             // TODO Bloc catch auto-g�n�r�
             e.printStackTrace();
         }
     }
 
-    private static void writeXML(Document document) {
+    private static void writeXML(Context context,Document document) {
         XMLOutputter xmlOutput = new XMLOutputter();
         xmlOutput.setFormat(Format.getPrettyFormat());
         try {
-
-            xmlOutput.output(document, new FileWriter(document.getBaseURI()
-                    .replaceFirst("file:/", "")));
+            xmlOutput.output(document, new FileOutputStream(new File(context.getFilesDir(),"xmlfile.xml")));
         } catch (IOException e) {
             // TODO Bloc catch auto-g�n�r�
             e.printStackTrace();
