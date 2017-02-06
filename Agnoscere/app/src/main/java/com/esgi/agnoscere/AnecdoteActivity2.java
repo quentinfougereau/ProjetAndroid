@@ -1,24 +1,37 @@
 package com.esgi.agnoscere;
 
 import android.content.Intent;
+
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
+
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import android.widget.Toast;
+
 
 import com.esgi.agnoscere.anecdoteview.CommentAdapter;
 import com.esgi.agnoscere.xmlparser.Anecdote;
 import com.esgi.agnoscere.xmlparser.Comment;
 import com.esgi.agnoscere.xmlparser.XMLParser;
 
+
+import org.jdom2.Document;
+
 import java.util.List;
 
-public class AnecdoteActivity2 extends AppCompatActivity {
+public class AnecdoteActivity2 extends AppCompatActivity{
 
-    ListView mListView;
-    Anecdote mAnecdote;
+    private ListView mListView;
+    private Anecdote mAnecdote;
+    private Document mDocument;
+    private Button mIKnewItButton;
+    private Button miDidntKnowit;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +39,26 @@ public class AnecdoteActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_anecdote2);
 
         mListView = (ListView) findViewById(R.id.listView);
+
+        Intent Intent = getIntent();
+        mAnecdote = (Anecdote) Intent.getSerializableExtra("anecdote");
+        mDocument = (Document) Intent.getSerializableExtra("document");
+
+        mIKnewItButton = (Button) findViewById(R.id.jlsd);
+        miDidntKnowit = (Button) findViewById(R.id.jmcmb);
+
+        mIKnewItButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                iKnewIt();
+            }
+        });
+
+        miDidntKnowit.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                iDidntKnowIt();
+            }
+        });
+
         Intent intent = getIntent();
         mAnecdote = (Anecdote) intent.getSerializableExtra("anecdote");
 
@@ -55,13 +88,14 @@ public class AnecdoteActivity2 extends AppCompatActivity {
         anecdoteText.setText(mAnecdote.getContent());
     }
 
-    public void iKnewIt(View view)
+
+    public void iKnewIt()
     {
-        //XMLParser.iKnewIt();
+        XMLParser.iKnewIt(mDocument, Integer.parseInt(mAnecdote.getId()));
     }
 
-    public void iDidntKnewIt()
+    public void iDidntKnowIt()
     {
-        //XMLParser.iDidntKnowIt();
+        XMLParser.iDidntKnowIt(mDocument, Integer.parseInt(mAnecdote.getId()));
     }
 }

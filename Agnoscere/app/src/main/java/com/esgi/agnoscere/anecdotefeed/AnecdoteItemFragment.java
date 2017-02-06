@@ -2,6 +2,8 @@ package com.esgi.agnoscere.anecdotefeed;
 
 import android.content.Context;
 import android.os.Bundle;
+
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,6 +20,7 @@ import com.esgi.agnoscere.xmlparser.XMLParser;
 
 import org.jdom2.Document;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -83,6 +86,22 @@ public class AnecdoteItemFragment extends Fragment {
 
 
     @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof OnListFragmentInteractionListener) {
@@ -101,20 +120,14 @@ public class AnecdoteItemFragment extends Fragment {
 
     public ArrayList<Anecdote> getAnecdotes() {
 
-        /*
-        Document xmlDocument = XMLParser
-                .loadXMLDocument("/xmlfolder/xmlfile.xml");
-        System.out.println(xmlDocument.getBaseURI());
+        Document xmlDocument = null;
+        try {
+            xmlDocument = XMLParser.loadXMLDocument(getActivity().getAssets().open("xmlfile.xml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         ArrayList<Anecdote> anecdoteArray = XMLParser.parseXML(xmlDocument, "");
         return anecdoteArray;
-        */
-        ArrayList<Anecdote> anecdotesArray = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            Anecdote anecdote = new Anecdote(String.valueOf(i), "John Doe", "Lorem ipsum dolor sit amet", "Science", " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a viverra quam, non molestie diam. Aliquam ut maximus urna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi ac pretium eros. In molestie, risus non rutrum placerat, sapien eros gravida orci, nec pellentesque urna lectus vel dolor. Nullam viverra sagittis fringilla. Proin tincidunt maximus pellentesque. Quisque scelerisque, ipsum in feugiat consectetur, felis dui ultrices nisi, in pulvinar leo est ut est. Nunc ut lectus non mauris interdum molestie.", "29/01/2017", 0, 0, null, null, null, null);
-            anecdotesArray.add(anecdote);
-        }
-        return anecdotesArray;
-
     }
 
 }
