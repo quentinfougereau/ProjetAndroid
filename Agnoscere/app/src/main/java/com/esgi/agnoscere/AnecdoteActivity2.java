@@ -26,7 +26,6 @@ import com.esgi.agnoscere.xmlparser.XMLParser;
 
 import org.jdom2.Document;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
