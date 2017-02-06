@@ -94,6 +94,7 @@ public class AnecdoteFeedActivity extends AppCompatActivity implements AnecdoteF
         Intent intent = new Intent(this, AnecdoteActivity2.class);
         intent.putExtra("document",xmlDocument);
         intent.putExtra("anecdote", mItem);
+        intent.putExtra("user",getIntent().getStringExtra("user"));
         /*
         try {
             intent.putExtra("docXml", (Serializable) getAssets().open("xmlfile.xml"));
@@ -155,6 +156,7 @@ public class AnecdoteFeedActivity extends AppCompatActivity implements AnecdoteF
         switch (item.getItemId()) {
             case R.id.menu_settings:
                 Intent intent = new Intent(this, CreateAnecdoteActivity.class);
+                intent.putExtra("user",getIntent().getStringExtra("user"));
                 startActivity(intent);
                 return true;
             default:
