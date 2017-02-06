@@ -26,6 +26,7 @@ import com.esgi.agnoscere.xmlparser.XMLParser;
 
 import org.jdom2.Document;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
@@ -161,6 +162,7 @@ public class AnecdoteActivity2 extends AppCompatActivity implements View.OnClick
             Bitmap mIcon11 = null;
             try {
                 InputStream in = new java.net.URL(urldisplay).openStream();
+                Log.i("ERROR",urldisplay);
                 mIcon11 = BitmapFactory.decodeStream(in);
             } catch (Exception e) {
                 Log.e("Error", e.getMessage());

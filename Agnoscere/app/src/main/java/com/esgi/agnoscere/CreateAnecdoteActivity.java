@@ -11,6 +11,8 @@ import com.esgi.agnoscere.xmlparser.XMLParser;
 
 import org.jdom2.Document;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -53,7 +55,7 @@ public class CreateAnecdoteActivity extends AppCompatActivity implements View.On
 
         Document xmlDocument = null;
         try {
-            xmlDocument = XMLParser.loadXMLDocument(this.getAssets().open("xmlfile.xml"));
+            xmlDocument = XMLParser.loadXMLDocument(new FileInputStream(new File(getFilesDir(),"xmlfile.xml")));
         } catch (IOException e) {
             e.printStackTrace();
         }

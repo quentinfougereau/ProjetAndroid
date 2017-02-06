@@ -178,7 +178,7 @@ public class XMLParser {
                     Element newCom = createElementComment(anecdoteId, autor,
                             contents, id);
                     elementComments.addContent(newCom);
-                    writeElementXML(context,elementComments,document);
+                    writeXML(context,document);
                     find=true;
                 }
             }
@@ -208,7 +208,7 @@ public class XMLParser {
         Element newAnecdote = createElementAnecdote(autor, title, category,
                 contents, videoid, imagelink, sources, id);
         root.addContent(newAnecdote);
-        writeElementXML(context,newAnecdote,document);
+        writeXML(context,document);
     }
 
     private static Element createElementAnecdote(String autor, String title,
@@ -254,7 +254,7 @@ public class XMLParser {
             if (element.getAttributeValue(XMLConstants.ID_ATTRIBUTE_ANECDOTE)
                     .equals(String.valueOf(anecdoteId))) {
                 element.getChild(XMLConstants.CONTENTS_ANECDOTE).setText(contents);
-                writeElementXML(context,element,document);
+                writeXML(context,document);
             }
 
         }
