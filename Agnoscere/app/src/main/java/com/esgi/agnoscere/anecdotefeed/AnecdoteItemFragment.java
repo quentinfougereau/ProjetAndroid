@@ -80,7 +80,6 @@ public class AnecdoteItemFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            //recyclerView.setAdapter(new MyAnecdoteItemRecyclerViewAdapter(DummyContent.ITEMS, mListener));
             recyclerView.setAdapter(new MyAnecdoteItemRecyclerViewAdapter(getAnecdotes(context), mListener));
         }
         return view;

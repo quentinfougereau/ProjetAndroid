@@ -118,7 +118,6 @@ public class AnecdoteFeedActivity extends AppCompatActivity implements AnecdoteF
     @Override
     protected void onResume() {
         super.onResume();
-        System.out.println("LOG : onResume");
         if (newAnecdoteHasBeenAdded()) {
             System.out.println("A new anecdote has been added");
             AnecdoteItemFragment anecdoteItemFragment = new AnecdoteItemFragment();

@@ -45,6 +45,8 @@ public class MyAnecdoteItemRecyclerViewAdapter extends RecyclerView.Adapter<MyAn
         holder.mContentView.setText(mValues.get(position).getContents());
         holder.mAuthorView.setText(mValues.get(position).getAutor());
         holder.mDateView.setText(mValues.get(position).getDate());
+        holder.mJmcmb.setText(Integer.toString(mValues.get(position).getIdidntknowvote()));
+        holder.mJlsd.setText(Integer.toString(mValues.get(position).getIknewvote()));
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +71,8 @@ public class MyAnecdoteItemRecyclerViewAdapter extends RecyclerView.Adapter<MyAn
         public final TextView mContentView;
         public final TextView mAuthorView;
         public final TextView mDateView;
+        public final TextView mJmcmb;
+        public final TextView mJlsd;
         //public DummyItem mItem;
         public Anecdote mItem;
 
@@ -79,6 +83,8 @@ public class MyAnecdoteItemRecyclerViewAdapter extends RecyclerView.Adapter<MyAn
             mContentView = (TextView) view.findViewById(R.id.content);
             mAuthorView = (TextView) view.findViewById(R.id.author);
             mDateView = (TextView) view.findViewById(R.id.date);
+            mJmcmb = (TextView) view.findViewById(R.id.jmcmb);
+            mJlsd = (TextView) view.findViewById(R.id.jlsd);
         }
 
         @Override
