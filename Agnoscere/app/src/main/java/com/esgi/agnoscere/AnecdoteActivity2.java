@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -61,6 +62,12 @@ public class AnecdoteActivity2 extends AppCompatActivity implements View.OnClick
         mEditText.setOnClickListener(this);
         sendComment.setOnClickListener(this);
 
+        if(mAnecdote.getImagelink().length() == 0) {
+            ImageView imageView = (ImageView) findViewById(R.id.image_view);
+            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) imageView.getLayoutParams();
+            params.height = 0;
+            imageView.setLayoutParams(params);
+        }
 
         setCommentList();
         setAnecdoteTextView();
