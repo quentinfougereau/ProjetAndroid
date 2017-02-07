@@ -98,7 +98,7 @@
     <ididntknowvote>0</ididntknowvote>
     <iknewvote>0</iknewvote>
     <videoid>ID VIDEO NICOLAS</videoid>
-    <imagelink>Y a pas d'image</imagelink>
+    <imagelink></imagelink>
     <sources>
       <source>www.sourcesnumero1.com</source>
       <source>www.sourcesnumero2.com</source>
@@ -114,7 +114,7 @@
     <ididntknowvote>0</ididntknowvote>
     <iknewvote>0</iknewvote>
     <videoid>ID VIDEO NICOLAS</videoid>
-    <imagelink>Y a pas d'image</imagelink>
+    <imagelink></imagelink>
     <sources>
       <source>www.sourcesnumero1.com</source>
       <source>www.sourcesnumero2.com</source>
@@ -161,7 +161,7 @@
     <ididntknowvote>3</ididntknowvote>
     <iknewvote>3</iknewvote>
     <videoid>ID VIDEO NICOLAS</videoid>
-    <imagelink>Y a pas d'image</imagelink>
+    <imagelink></imagelink>
     <sources>
       <source>www.sourcesnumero1.com</source>
       <source>www.sourcesnumero2.com</source>
@@ -188,7 +188,7 @@
     <ididntknowvote>0</ididntknowvote>
     <iknewvote>0</iknewvote>
     <videoid>ID VIDEO NICOLAS</videoid>
-    <imagelink>Y a pas d'image</imagelink>
+    <imagelink></imagelink>
     <sources>
       <source>www.sourcesnumero1.com</source>
       <source>www.sourcesnumero2.com</source>
@@ -204,7 +204,7 @@
     <ididntknowvote>0</ididntknowvote>
     <iknewvote>0</iknewvote>
     <videoid>ID VIDEO NICOLAS</videoid>
-    <imagelink>Y a pas d'image</imagelink>
+    <imagelink></imagelink>
     <sources>
       <source>www.sourcesnumero1.com</source>
       <source>www.sourcesnumero2.com</source>
@@ -220,7 +220,7 @@
     <ididntknowvote>0</ididntknowvote>
     <iknewvote>0</iknewvote>
     <videoid>f</videoid>
-    <imagelink>g</imagelink>
+    <imagelink></imagelink>
     <sources />
     <comments />
   </anecdote>

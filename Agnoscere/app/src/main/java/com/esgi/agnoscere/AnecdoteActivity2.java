@@ -27,7 +27,11 @@ import com.esgi.agnoscere.xmlparser.XMLParser;
 
 import org.jdom2.Document;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AnecdoteActivity2 extends AppCompatActivity implements View.OnClickListener{
@@ -37,6 +41,7 @@ public class AnecdoteActivity2 extends AppCompatActivity implements View.OnClick
     private Document mDocument;
     private EditText mEditText;
     private String mAuthor;
+    private int mNbComment;
 
 
     @Override
@@ -102,6 +107,18 @@ public class AnecdoteActivity2 extends AppCompatActivity implements View.OnClick
 
     private void writeComment() {
         XMLParser.postComment(getBaseContext(),mDocument,Integer.parseInt(mAnecdote.getId()),mAuthor,mEditText.getText().toString());
+        updateAnecdote();
+    }
+
+    public void updateAnecdote() {
+        try {
+            mDocument = XMLParser.loadXMLDocument(new FileInputStream(new File(getFilesDir(),"xmlfile.xml")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        ArrayList<Anecdote> anecdoteArray = XMLParser.parseXML(mDocument, "");
+        mAnecdote = anecdoteArray.get(Integer.parseInt(mAnecdote.getId())-1);
+        setCommentList();
     }
 
     private void setAnecdoteAuthor() {

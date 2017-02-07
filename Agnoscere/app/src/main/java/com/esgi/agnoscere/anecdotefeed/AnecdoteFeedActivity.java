@@ -95,13 +95,6 @@ public class AnecdoteFeedActivity extends AppCompatActivity implements AnecdoteF
         intent.putExtra("document",xmlDocument);
         intent.putExtra("anecdote", mItem);
         intent.putExtra("user",getIntent().getStringExtra("user"));
-        /*
-        try {
-            intent.putExtra("docXml", (Serializable) getAssets().open("xmlfile.xml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        */
         startActivity(intent);
 
     }
