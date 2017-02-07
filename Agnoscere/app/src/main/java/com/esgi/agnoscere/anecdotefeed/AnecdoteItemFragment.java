@@ -2,6 +2,7 @@ package com.esgi.agnoscere.anecdotefeed;
 
 import android.content.Context;
 import android.os.Bundle;
+
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -79,11 +80,11 @@ public class AnecdoteItemFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            //recyclerView.setAdapter(new MyAnecdoteItemRecyclerViewAdapter(DummyContent.ITEMS, mListener));
             recyclerView.setAdapter(new MyAnecdoteItemRecyclerViewAdapter(getAnecdotes(context), mListener));
         }
         return view;
     }
+
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

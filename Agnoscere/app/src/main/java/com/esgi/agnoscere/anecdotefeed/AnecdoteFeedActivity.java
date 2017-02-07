@@ -1,5 +1,6 @@
 package com.esgi.agnoscere.anecdotefeed;
 
+
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+
 
 import com.esgi.agnoscere.AnecdoteActivity2;
 import com.esgi.agnoscere.CreateAnecdoteActivity;
@@ -38,6 +40,7 @@ import java.util.ArrayList;
 
 public class AnecdoteFeedActivity extends AppCompatActivity implements AnecdoteFeedFragment.OnFragmentInteractionListener, OnListFragmentInteractionListener {
 
+
     public int nb_anecdote = 0;
     private Document xmlDocument;
 
@@ -53,6 +56,7 @@ public class AnecdoteFeedActivity extends AppCompatActivity implements AnecdoteF
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.fragmentContainer, anecdoteItemFragment);
         fragmentTransaction.commit();
+
 
     }
         public void copyByte() {
@@ -107,7 +111,6 @@ public class AnecdoteFeedActivity extends AppCompatActivity implements AnecdoteF
     @Override
     protected void onResume() {
         super.onResume();
-        System.out.println("LOG : onResume");
         if (newAnecdoteHasBeenAdded()) {
             System.out.println("A new anecdote has been added");
             AnecdoteItemFragment anecdoteItemFragment = new AnecdoteItemFragment();

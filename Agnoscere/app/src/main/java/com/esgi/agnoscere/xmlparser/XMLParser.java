@@ -1,7 +1,6 @@
 package com.esgi.agnoscere.xmlparser;
 
 
-
 import org.jdom2.Attribute;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -26,6 +25,7 @@ import java.util.List;
 
 import com.esgi.agnoscere.constants.Vote;
 import com.esgi.agnoscere.constants.XMLConstants;
+
 
 import android.content.Context;
 
@@ -284,13 +284,13 @@ public class XMLParser {
     public static void main(String[] args) {
 		/*Document xmlDocument = XMLParser
 				.loadXMLDocument("xmlfolder/xmlfile.xml");
+
 		XMLParser.postAnecdote(xmlDocument,"a","b","d","e","f","g",null);
 		XMLParser.postComment(xmlDocument, 5,"Nicolas","je test l'add");
 		XMLParser.editAnecdote(xmlDocument, 2, "A le batard");
 		XMLParser.iDidntKnowIt(xmlDocument, 6);
 		XMLParser.iKnewIt(xmlDocument, 6);
-		ArrayList<Anecdote> anecdoteArray = XMLParser.parseXML(xmlDocument, "");
-		XMLParser.displayAnecdotes(anecdoteArray);*/
+		*/
 
     }
 }
