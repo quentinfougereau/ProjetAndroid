@@ -5,6 +5,7 @@ import android.content.Intent;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import com.esgi.agnoscere.anecdoteview.CommentAdapter;
 import com.esgi.agnoscere.xmlparser.Anecdote;
 import com.esgi.agnoscere.xmlparser.Comment;
 import com.esgi.agnoscere.xmlparser.XMLParser;
+import com.google.android.gms.plus.PlusShare;
 
 
 import org.jdom2.Document;
@@ -41,7 +43,6 @@ public class AnecdoteActivity2 extends AppCompatActivity implements View.OnClick
     private Document mDocument;
     private EditText mEditText;
     private String mAuthor;
-    private int mNbComment;
 
 
     @Override
@@ -59,6 +60,8 @@ public class AnecdoteActivity2 extends AppCompatActivity implements View.OnClick
         Button iKnewItButton = (Button) findViewById(R.id.jlsd);
         Button iDidntKnowit = (Button) findViewById(R.id.jmcmb);
         Button sendComment = (Button) findViewById(R.id.send_comment_button);
+        Button shareButton = (Button) findViewById(R.id.share_button);
+
 
         mEditText = (EditText) findViewById(R.id.comment_EditText);
 
@@ -66,6 +69,7 @@ public class AnecdoteActivity2 extends AppCompatActivity implements View.OnClick
         iDidntKnowit.setOnClickListener(this);
         mEditText.setOnClickListener(this);
         sendComment.setOnClickListener(this);
+        shareButton.setOnClickListener(this);
 
         if(mAnecdote.getImagelink().length() == 0) {
             ImageView imageView = (ImageView) findViewById(R.id.image_view);
@@ -101,8 +105,23 @@ public class AnecdoteActivity2 extends AppCompatActivity implements View.OnClick
             case R.id.send_comment_button:
                 writeComment();
                 break;
+            case R.id.share_button:
+                googlePlusShare();
+                break;
         }
 
+    }
+
+    private void googlePlusShare()
+    {
+        // Launch the Google+ share dialog with attribution to your app.
+        Intent shareIntent = new PlusShare.Builder(this)
+                .setType("text/plain")
+                .setText(mAnecdote.getContent())
+                .setContentUrl(Uri.parse("https://developers.google.com/+/"))
+                .getIntent();
+
+        startActivityForResult(shareIntent, 0);
     }
 
     private void writeComment() {
