@@ -8,7 +8,7 @@
     <date>Date 1</date>
     <ididntknowvote>0</ididntknowvote>
     <iknewvote>24</iknewvote>
-    <videoid></videoid>
+    <videoid>https://www.youtube.com/watch?v=y3TEB3jyqeE</videoid>
     <imagelink>http://img4.hostingpics.net/pics/118117logoCopie.png</imagelink>
     <sources>
       <source>www.google.fr</source>
@@ -38,7 +38,7 @@
   </anecdote>
   <anecdote id="2">
     <autor>Auteur 2</autor>
-    <title>Anecdote numero 2</title>
+    <title>Anecdote2</title>
     <category>Sciences</category>
     <contents>A le batard</contents>
     <date>Date 2</date>
@@ -66,7 +66,7 @@
     <date>Date 3</date>
     <ididntknowvote>0</ididntknowvote>
     <iknewvote>0</iknewvote>
-    <videoid>abcd</videoid>
+    <videoid>https://www.youtube.com/watch?v=y3TEB3jyqeE</videoid>
     <imagelink />
     <sources>
       <source>www.wikipedia.fr</source>

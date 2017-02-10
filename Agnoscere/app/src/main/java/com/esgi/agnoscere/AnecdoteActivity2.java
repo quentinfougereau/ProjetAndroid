@@ -43,6 +43,7 @@ public class AnecdoteActivity2 extends AppCompatActivity implements View.OnClick
     private Document mDocument;
     private EditText mEditText;
     private String mAuthor;
+    private Button youtubeButton;
 
 
     @Override
@@ -61,7 +62,7 @@ public class AnecdoteActivity2 extends AppCompatActivity implements View.OnClick
         Button iDidntKnowit = (Button) findViewById(R.id.jmcmb);
         Button sendComment = (Button) findViewById(R.id.send_comment_button);
         Button shareButton = (Button) findViewById(R.id.share_button);
-
+        youtubeButton = (Button) findViewById(R.id.youtube_button);
 
         mEditText = (EditText) findViewById(R.id.comment_EditText);
 
@@ -70,6 +71,7 @@ public class AnecdoteActivity2 extends AppCompatActivity implements View.OnClick
         mEditText.setOnClickListener(this);
         sendComment.setOnClickListener(this);
         shareButton.setOnClickListener(this);
+        youtubeButton.setOnClickListener(this);
 
         if(mAnecdote.getImagelink().length() == 0) {
             ImageView imageView = (ImageView) findViewById(R.id.image_view);
@@ -84,6 +86,7 @@ public class AnecdoteActivity2 extends AppCompatActivity implements View.OnClick
         setAnecdoteIknewit();
         setmAnecdoteIDidntKnowit();
         setAnecdoteTitle();
+        updateUI();
 
         new DownloadImageTask((ImageView) findViewById(R.id.image_view))
                 .execute(mAnecdote.getImagelink());
@@ -108,8 +111,16 @@ public class AnecdoteActivity2 extends AppCompatActivity implements View.OnClick
             case R.id.share_button:
                 googlePlusShare();
                 break;
+            case R.id.youtube_button:
+                launchYoutube();
         }
 
+    }
+
+    private void launchYoutube() {
+        Intent intent = new Intent(this,YoutubeActivity.class);
+        intent.putExtra("youtube",mAnecdote.getVideoid());
+        startActivity(intent);
     }
 
     private void googlePlusShare()
@@ -187,6 +198,16 @@ public class AnecdoteActivity2 extends AppCompatActivity implements View.OnClick
     public void iDidntKnowIt()
     {
         XMLParser.iDidntKnowIt(getBaseContext(),mDocument, Integer.parseInt(mAnecdote.getId()));
+    }
+
+
+
+    private void updateUI() {
+        if (mAnecdote.getVideoid().length() == 0) {
+            youtubeButton.setVisibility(View.GONE);
+        } else {
+            youtubeButton.setVisibility(View.VISIBLE);
+        }
     }
 
     // AsyckTask to download image (url given )

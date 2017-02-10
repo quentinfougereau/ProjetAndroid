@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.esgi.agnoscere.AnecdoteActivity2;
 import com.esgi.agnoscere.CreateAnecdoteActivity;
 import com.esgi.agnoscere.R;
-import com.esgi.agnoscere.anecdotefeed.dummy.DummyContent;
+
 import com.esgi.agnoscere.xmlparser.Anecdote;
 import com.esgi.agnoscere.xmlparser.XMLParser;
 
