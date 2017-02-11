@@ -8,4 +8,10 @@
         actionbarcompat_mse:showAsAction="never"
         android:title="Add Anecdote"/>
 
+    <item
+        android:id="@+id/menu_edit_anecdote"
+        android:icon="@mipmap/ic_action_settings"
+        actionbarcompat_mse:showAsAction="never"
+        android:title="Edit Anecdote"/>
+
 </menu>

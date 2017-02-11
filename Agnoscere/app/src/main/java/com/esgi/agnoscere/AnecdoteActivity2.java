@@ -9,6 +9,8 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import android.widget.Button;
@@ -17,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.esgi.agnoscere.anecdoteview.CommentAdapter;
@@ -180,6 +183,36 @@ public class AnecdoteActivity2 extends AppCompatActivity implements View.OnClick
         //after downloading
         protected void onPostExecute(Bitmap result) {
             bmImage.setImageBitmap(result);
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_bar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_settings:
+                Intent intent = new Intent(this, CreateAnecdoteActivity.class);
+                intent.putExtra("user",getIntent().getStringExtra("user"));
+                startActivity(intent);
+                return true;
+            case R.id.menu_edit_anecdote:
+                String user = getIntent().getStringExtra("user");
+                if (!user.equals("Anonymous")) {
+                    Intent intent_2 = new Intent(this, EditAnecdoteActivity.class);
+                    Anecdote anecdote = (Anecdote) getIntent().getSerializableExtra("anecdote");
+                    intent_2.putExtra("anecdote", anecdote);
+                    startActivity(intent_2);
+                } else {
+                    Toast.makeText(this, "Vous ne pouver pas éditer en Anonymous", Toast.LENGTH_LONG).show();
+                }
+                    return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 
