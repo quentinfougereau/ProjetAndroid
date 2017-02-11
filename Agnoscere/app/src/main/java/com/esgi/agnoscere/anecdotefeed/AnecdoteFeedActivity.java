@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.esgi.agnoscere.AnecdoteActivity2;
 import com.esgi.agnoscere.CreateAnecdoteActivity;
 import com.esgi.agnoscere.R;
-import com.esgi.agnoscere.anecdotefeed.dummy.DummyContent;
+
 import com.esgi.agnoscere.xmlparser.Anecdote;
 import com.esgi.agnoscere.xmlparser.XMLParser;
 
@@ -99,13 +99,6 @@ public class AnecdoteFeedActivity extends AppCompatActivity implements AnecdoteF
         intent.putExtra("document",xmlDocument);
         intent.putExtra("anecdote", mItem);
         intent.putExtra("user",getIntent().getStringExtra("user"));
-        /*
-        try {
-            intent.putExtra("docXml", (Serializable) getAssets().open("xmlfile.xml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        */
         startActivity(intent);
 
     }

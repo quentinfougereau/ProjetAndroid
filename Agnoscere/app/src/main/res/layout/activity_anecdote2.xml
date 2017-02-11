@@ -17,6 +17,7 @@
         android:id="@+id/image_viewLayout"
         android:orientation="vertical"
         android:layout_alignParentTop="true">
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="150dp"
@@ -26,6 +27,13 @@
             android:scaleType="fitXY"
             android:id="@+id/image_view"
             />
+        <Button
+            android:text="video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/youtube_button"
+            android:layout_below="@+id/image_viewLayout"
+            android:layout_marginTop="12dp" />
     </LinearLayout>
 
     <RelativeLayout
@@ -94,6 +102,12 @@
             android:ems="10"
             android:id="@+id/textView_jlsd"
             android:layout_weight="1" />
+        <Button
+            android:id="@+id/share_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Google+"
+            />
     </LinearLayout>
 
     <LinearLayout

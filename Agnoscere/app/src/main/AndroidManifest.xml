@@ -16,7 +16,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AnecdoteActivity2" />
+        <activity android:name=".AnecdoteActivity2"
+            android:screenOrientation="portrait"> </activity>
 
         <uses-permission android:name="android.permission.INTERNET" />
 
@@ -48,6 +49,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".EditAnecdoteActivity"></activity>
+
+        <activity android:name=".YoutubeActivity"></activity>
     </application>
 
 </manifest>
